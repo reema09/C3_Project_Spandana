@@ -14,7 +14,7 @@ class RestaurantServiceTest {
     LocalTime closingTime;
 
     @BeforeEach
-    public void setUp() throws restaurantNotFoundException{
+    public void setUp(){
         service = new RestaurantService();
         openingTime = LocalTime.parse("10:30:00");
         closingTime = LocalTime.parse("22:00:00");

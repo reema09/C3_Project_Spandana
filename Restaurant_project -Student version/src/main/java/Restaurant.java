@@ -19,11 +19,11 @@ public class Restaurant {
 
     public boolean isRestaurantOpen() {
 
-        LocalTime now=LocalTime.now();
+        LocalTime now=getCurrentTime();
         int openingThreshold=now.compareTo(openingTime);
         int closingThreshold=now.compareTo(closingTime);
         if (openingThreshold>0 && closingThreshold<0)
-        return true;
+            return true;
         else
             return false;
     }
