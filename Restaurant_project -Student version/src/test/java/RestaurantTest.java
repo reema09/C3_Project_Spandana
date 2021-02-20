@@ -25,8 +25,8 @@ class RestaurantTest {
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         LocalTime now=restaurant.getCurrentTime();
-        LocalTime openingTime = now.minusHours(2);
-        LocalTime closingTime = now.plusHours(4);
+        LocalTime openingTime = now.minusHours(6);
+        LocalTime closingTime = now.plusHours(1);
         restaurant =service.addRestaurant("Saakshi's cafe","Chennai",openingTime,closingTime);
        assertTrue( restaurant.isRestaurantOpen());
     }

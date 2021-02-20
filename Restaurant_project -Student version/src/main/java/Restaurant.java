@@ -20,12 +20,28 @@ public class Restaurant {
     public boolean isRestaurantOpen() {
 
         LocalTime now=getCurrentTime();
-        int openingThreshold=now.compareTo(openingTime);
-        int closingThreshold=now.compareTo(closingTime);
-        if (openingThreshold>0 && closingThreshold<0)
-            return true;
-        else
-            return false;
+        int openingHour= openingTime.getHour()==0 ?  24  : openingTime.getHour();
+        int closingHour= closingTime.getHour()==0 ?  24  : closingTime.getHour();
+        int currentHour= now.getHour()  ==0 ?  24  : now.getHour();
+        if(currentHour==openingHour){
+            if(now.getMinute() > openingTime.getMinute()) return true;
+        }
+        if(currentHour==closingHour){
+            if(now.getMinute() < closingTime.getMinute()) return true;
+        }
+        if(openingHour<closingHour) {
+
+            if ((currentHour > openingHour) && (currentHour < closingHour)) {
+                return true;
+            }
+        }
+            if(openingHour>closingHour){
+
+                if((currentHour>=1 && currentHour<closingHour) || (currentHour>openingHour && currentHour<=24)){
+                    return true;
+                }
+        }
+        return false;
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
