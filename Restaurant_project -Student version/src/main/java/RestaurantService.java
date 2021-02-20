@@ -19,6 +19,15 @@ public class RestaurantService {
         restaurants.add(newRestaurant);
         return newRestaurant;
     }
+    public float totalOrder(ArrayList<String>items,Restaurant restaurant){
+        float total_price=0f;
+        Item item;
+        for(String addedItem:items){
+            item=restaurant.getItem(addedItem);
+            total_price=item.getPrice()+total_price;
+        }
+        return total_price;
+    }
 
     public Restaurant removeRestaurant(String restaurantName) throws restaurantNotFoundException {
         Restaurant restaurantToBeRemoved = findRestaurantByName(restaurantName);

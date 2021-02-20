@@ -17,6 +17,14 @@ public class Restaurant {
         this.closingTime = closingTime;
     }
 
+    public Item getItem(String itemName){
+        if(itemName!=null){
+            return findItemByName(itemName) ;
+        }
+        else
+            return null;
+    }
+
     public boolean isRestaurantOpen() {
 
         LocalTime now=getCurrentTime();
